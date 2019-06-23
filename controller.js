@@ -53,7 +53,7 @@ function calculateGrain(){
   let grain = 0;
   buildings.forEach((element) => {
     if (element.type === "farmer"){
-      grain += workerlist.farmer * element.grainPerWorker;
+      grain += element.numberOfWorkers  * element.grainPerWorker;
     };
   });
   stats.grain = grain - stats.population;
@@ -63,7 +63,7 @@ function calculateWood(){
   let wood = stats.wood;
   buildings.forEach((element) => {
     if (element.type === "woodCutter"){
-      vacancies += workerlist.woodCutter * element.woodPerWorker;
+      vacancies += element.numberOfWorkers  * element.woodPerWorker;
     };
   });
   stats.wood = wood;
@@ -73,7 +73,7 @@ function calculateStone(){
   let stone = stats.stone;
   buildings.forEach((element) => {
     if (element.type === "miner"){
-      stone += workerlist.miner * element.stonePerWorker;
+      stone += element.numberOfWorkers  * element.stonePerWorker;
     };
   });
   stats.stone = stone;
@@ -83,7 +83,7 @@ function calculateIron(){
   let iron = stats.iron;
   buildings.forEach((element) => {
     if (element.type === "miner"){
-      stone += workerlist.miner * element.ironPerWorker;
+      stone += element.numberOfWorkers  * element.ironPerWorker;
     };
   });
   stats.iron = iron;
@@ -93,7 +93,7 @@ function calculateSteel(){
   let steel = 0;
   buildings.forEach((element) => {
     if (element.type === "blackSmith"){
-      steel += workerlist.blackSmith * element.steelPerWorker;
+      steel += element.numberOfWorkers  * element.steelPerWorker;
     };
   });
   stats.steel = steel;
@@ -103,7 +103,7 @@ function calculateBread(){
   let bread = 0;
   buildings.forEach((element) => {
     if (element.type === "baker"){
-      bread += workerlist.baker * element.breadPerWorker;
+      bread += element.numberOfWorkers  * element.breadPerWorker;
     };
   });
   stats.bread = bread;
@@ -113,8 +113,54 @@ function calculateAlcohal(){
   let alcohal = 0;
   buildings.forEach((element) => {
     if (element.type === "brewer"){
-      alcohal += workerList.brewer * element.alcohalPerWorker;
+      alcohal += element.numberOfWorkers  * element.alcohalPerWorker;
     };
   });
-  stats.vacancies = vacancies - stats.population;
+  stats.alcohal = alcohal;
+};
+
+function calculateStarvationProtection(){
+  let foodStores = 0;
+  buildings.forEach((element) => {
+    if element.type === "grainHandler"){
+      foodStores += element.numberOfWorkers * element.populationServed;
+    };
+  });
+  protections.starvation = foodStores;
+};
+
+function calculateFireProtection(){
+  let fireDefence =
+  buildings.forEach((element) => {
+    if element.type === ""){
+
+    }
+  });
+};
+
+function calculateCrimeProtection(){
+  buildings.forEach((element) => {
+    if element.type === ""){
+
+    }
+  });
+
+};
+
+function calculateDiseaseProtection(){
+  buildings.forEach((element) => {
+    if element.type === ""){
+
+    }
+  });
+
+};
+
+function calculateAttackProtection(){
+  buildings.forEach((element) => {
+    if element.type === ""){
+
+    }
+  });
+
 };
