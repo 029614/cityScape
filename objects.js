@@ -28,6 +28,13 @@ let stats = {
   vacancies: 0,
   numberOfBuildings: 0
 };
+let protections = {
+  starvation: 0,
+  fire: 0,
+  disease: 0,
+  crime: 0,
+  attack: 0
+};
 let cityTiers = [
   {
     type: "Village",
@@ -196,7 +203,7 @@ let buildings = [
     numberOwned: 0,
     numberOfWorkers: 0,
     maxNumberOfWorkers: 5,
-    populationServed: 1000
+    populationServed: 200
   },
   {
     type: "grainHandler",
@@ -205,7 +212,7 @@ let buildings = [
     numberOwned: 0,
     numberOfWorkers: 0,
     maxNumberOfWorkers: 10,
-    populationServed: 2500
+    populationServed: 400
   },
   {
     type: "grainHandler",
@@ -214,7 +221,7 @@ let buildings = [
     numberOwned: 0,
     numberOfWorkers: 0,
     maxNumberOfWorkers: 20,
-    populationServed: 10000
+    populationServed: 750
   },
   {
     type: "woodCutter",
