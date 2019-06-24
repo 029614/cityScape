@@ -122,7 +122,7 @@ function calculateAlcohal(){
 function calculateStarvationProtection(){
   let foodStores = 0;
   buildings.forEach((element) => {
-    if element.type === "grainHandler"){
+    if (element.type === "grainHandler"){
       foodStores += element.numberOfWorkers * element.populationServed;
     };
   });
@@ -163,4 +163,26 @@ function calculateAttackProtection(){
     }
   });
 
+};
+
+function turn(){
+  calulateMorale();
+  calculateHunger();
+  calculateHealth();
+  calculateNumberOfBuildings();
+  calculateVacancies();
+  calculatePopulation();
+  calculateGrain();
+  calculateWood();
+  calculateStone();
+  calculateIron();
+  calculateSteel();
+  calculateBread();
+  calculateAlcohal();
+  calculateStarvationProtection();
+  calculateFireProtection();
+  calculateCrimeProtection();
+  calculateDiseaseProtection();
+  calculateAttackProtection();
+  stats.turn++;
 };
