@@ -1,39 +1,49 @@
-
 let workerList = {
-  laborers: 0,
-  farmer: 0,
-  blackSmith: 0,
-  woodCutter: 0,
-  miner: 0,
-  doctor: 0,
-  police: 0,
-  army: 0,
-  fireFighter: 0,
-  cook: 0,
-  brewer: 0,
-  unemployed: 25,
+  army: 0,  //contribute to protection frmo attack
+  bakers: 0,  //contribute to production of bread
+  blackSmiths: 0,  //contribute to production of steel
+  brewers: 0,  //contribute to production of alcohal
+  doctors: 0,  //contribute to protection from disease
+  farmers: 0,  //contribute to production of grain
+  fireFighters: 0, //contribute to protection from fire
+  laborers: 0,  //contribute to construction of new buildings
+  miners: 0, //contribute to production of stone and iron
+  police: 0,  //contribute to protection from crime
+  unemployed: 25, //contribute to crime
+  woodCutters: 0,  //contribute to production of wood
 }
 let stats = {
+  turn: 0,
+
+  //population modifiers. 50+ means population rises. -50 population declines.
   morale: 75,
   hunger: 75,
   health: 75,
-  grain: 50,
+  food: 50,  //grain + (bread*10)
+
+  //population data
+  population: 0,
+  vacancies: 0,
+  numberOfBuildings: 0,
+
+  //building resources
   wood: 50,
   stone: 50,
   iron: 25,
   steel: 0,
-  bread: 0,
+
+  //morale resources
+  bread: 0, //works as food in place of grain. 1 bread feeds 10 population.
   alcohal: 0,
-  population: 0,
-  vacancies: 0,
-  numberOfBuildings: 0
+  grain: 50  //1 grain feeds 1 population.
 };
 let protections = {
-  starvation: 0,
-  fire: 0,
-  disease: 0,
-  crime: 0,
-  attack: 0
+  //amount of protections against specific world events
+  starvation: 0, //population
+  fire: 0, //buildings
+  disease: 0, //population
+  crime: 0, //population
+  attack: 0 //population and buildings
 };
 let cityTiers = [
   {
@@ -79,7 +89,7 @@ let cityTiers = [
     description: "Congratulations! You've beaten the game!"
   }
 ];
-let buildings = [
+let houseBuildings = [
   {
     type: "residency",
     name: "Small House",
@@ -149,6 +159,9 @@ let buildings = [
     numberOwned: 0,
     maxResidency: 100
   },
+];
+
+let farmBuildings = [
   {
     type: "farmer",
     name: "Small Farm",
@@ -163,7 +176,9 @@ let buildings = [
   {
     type: "farmer",
     name: "Medium Farm",
-    cost: 1000,
+    costWood: 50,
+    costStone: 50,
+    costIron: 10,
     numberOwned: 0,
     numberOfWorkers: 0,
     maxNumberOfWorkers: 10,
@@ -172,7 +187,9 @@ let buildings = [
   {
     type: "farmer",
     name: "Large Farm",
-    cost: 5000,
+    costWood: 250,
+    costStone: 250,
+    costIron: 50,
     numberOwned: 0,
     numberOfWorkers: 0,
     maxNumberOfWorkers: 25,
@@ -181,12 +198,18 @@ let buildings = [
   {
     type: "farmer",
     name: "Huge Farm",
-    cost: 25000,
+    costWood: 500,
+    costStone: 500,
+    costIron: 250,
+    costSteel: 50,
     numberOwned: 0,
     numberOfWorkers: 0,
     maxNumberOfWorkers: 50,
     grainPerWorker: 500
   },
+];
+
+let graineryBuildings = [
   {
     type: "grainHandler",
     name: "Small Grainery",
@@ -194,7 +217,7 @@ let buildings = [
     numberOwned: 0,
     numberOfWorkers: 0,
     maxNumberOfWorkers: 1,
-    populationServed: 100
+    populationServedPerWorker: 10
   },
   {
     type: "grainHandler",
@@ -203,7 +226,7 @@ let buildings = [
     numberOwned: 0,
     numberOfWorkers: 0,
     maxNumberOfWorkers: 5,
-    populationServed: 200
+    populationServedPerWorker: 20
   },
   {
     type: "grainHandler",
@@ -212,7 +235,7 @@ let buildings = [
     numberOwned: 0,
     numberOfWorkers: 0,
     maxNumberOfWorkers: 10,
-    populationServed: 400
+    populationServedPerWorker: 40
   },
   {
     type: "grainHandler",
@@ -220,9 +243,12 @@ let buildings = [
     cost: 50000,
     numberOwned: 0,
     numberOfWorkers: 0,
-    maxNumberOfWorkers: 20,
-    populationServed: 750
+    maxNumberOfWorkers: 50,
+    populationServedPerWorker: 75
   },
+];
+
+let woodCutterBuildings = [
   {
     type: "woodCutter",
     name: "Small Wood Cutter's Camp",
@@ -261,6 +287,9 @@ let buildings = [
     maxNumberOfWorkers: 150,
     woodPerWorker: 100,
   },
+];
+
+let mineBuildings = [
   {
     type: "miner",
     name: "Small Mine",
@@ -302,6 +331,9 @@ let buildings = [
     stonePerWorker: 100,
     ironPerWorker: 50,
   },
+];
+
+let blackSmithBuildings = [
   {
     type: "blackSmith",
     name: "Small BlackSmith",
@@ -338,6 +370,9 @@ let buildings = [
     maxNumberOfWorkers: 150,
     steelPerWorker: 50
   },
+];
+
+let bakeryBuildings = [
   {
     type: "baker",
     name: "Small Bakery",
@@ -374,6 +409,9 @@ let buildings = [
     maxNumberOfWorkers: 150,
     breadPerWorker: 100,
   },
+];
+
+let breweryBuildings = [
   {
     type: "brewer",
     name: "Small Brewery",
@@ -410,6 +448,9 @@ let buildings = [
     maxNumberOfWorkers: 150,
     alcohalPerWorker: 100,
   },
+];
+
+let hospitalBuildings = [
   {
     type: "doctor",
     name: "Small Hospital",
@@ -446,6 +487,9 @@ let buildings = [
     maxNumberOfWorkers: 500,
     populationServed: 25000,
   },
+];
+
+let fireFighterBuildings = [
   {
     type: "fireFighter",
     name: "Small FireStation",
@@ -482,6 +526,9 @@ let buildings = [
     maxNumberOfWorkers: 500,
     buildingsServed: 5000,
   },
+];
+
+let policeBuildings = [
   {
     type: "police",
     name: "Small PoliceStation",
@@ -518,6 +565,9 @@ let buildings = [
     maxNumberOfWorkers: 500,
     populationServed: 25000,
   },
+];
+
+let militaryBuildings = [
   {
     type: "garrison",
     name: "Militia Garrison",
@@ -554,6 +604,9 @@ let buildings = [
     maxNumberOfWorkers: 2000,
     militiaryStrength: 20000
   },
+];
+
+let schoolBuildings = [
   {
     type: "school",
     name: "Small School",
@@ -590,6 +643,9 @@ let buildings = [
     maxNumberOfWorkers: 500,
     populationServed: 25000,
   },
+];
+
+let tradeBuildings = [
   {
     type: "trade",
     name: "Trading Post",
@@ -636,26 +692,3 @@ let buildings = [
     goodsSold: 20000,
   }
 ];
-let populationModifiers = {
-  //type: -2, -1, 0, +1, +2, +3
-  morale: ["suicidal", "very sad", "sad", "content", "happy", "very happy"],
-  hunger: ["starving", "very hungry", "hungry", "normal", "fed", "well fed"],
-  health: ["dying", "diseased", "sick", "normal", "healthy", "very healthy"],
-};
-let worldEvents = {
-  //type: effect
-  fire: numberOfBuildings*0.9, //negated with fire station
-  cropFailure: hunger--, //negated with grainery
-  disease: health--, //negated with hospitals
-  riots: morale--, //negated with police
-  flood: [morale--, hunger--], //cant be negated
-  dirtyCity: [morale--, health--], //cant be negated
-  rottenFood: [hunger--, health--], //cant be negated
-  raids: [morale--, health--, health--, totalPopulation*0.9, numberOfBuildings*0.9], //negated with army
-  goodHarvest: hunger++,
-  sanitationEducation: health++,
-  travelingCircus: morale++,
-  farmersMarket: [morale++, hunger++],
-  springCleaning: [morale++, health++],
-  cropDiversity: [hunger++, health++],
-}
