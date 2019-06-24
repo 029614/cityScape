@@ -50,13 +50,13 @@ function interpretHealth(){
 function displayStats(){
   $("#stats").replaceWith(
     $("#stats").append('<h2>Stats</h2>'),
-    $("#stats").append('<li>Population: ' + stats.population + '</li>'),
-    $("#stats").append('<li>Number of Buildings: ' + stats.numberOfBuildings + '</li>'),
-    $("#stats").append('<li>Vacancies: ' + stats.vacancies + '</li>'),
     $("#stats").append('<li>Morale: ' + interpretMorale() + '</li>'),
     $("#stats").append('<li>Hunger: ' + interpretHunger() + '</li>'),
     $("#stats").append('<li>Health: ' + interpretHealth() + '</li>'),
+    $("#stats").append('<li>Population: ' + stats.population + '</li>'),
     $("#stats").append('<li>Food: ' + stats.food + '</li>'),
+    $("#stats").append('<li>Number of Buildings: ' + stats.numberOfBuildings + '</li>'),
+    $("#stats").append('<li>Vacancies: ' + stats.vacancies + '</li>'),
     $("#turn").replaceWith("<p id='turn'>Turn: " + stats.turn + "</p>"),
     $("#villagetier").replaceWith("<p id='villagetier'>" + cityTiers[0].type + "</p>")
   );
