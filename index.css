@@ -1,0 +1,265 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #454d59;
+}
+
+#title{
+  position: absolute;
+  width: 900px;
+  height: 60px;
+  top: 0;
+  left: 50%;
+  margin-left: -450px;
+  text-align: center;
+  background-color: #1f3f17;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.title{
+  display: inline-block;
+}
+
+header h2{
+  margin: 0 30px 0 30px;
+}
+
+#title p {
+  position: absolute;
+  top: 10px;
+}
+
+#stats{
+  position: absolute;
+  width: 900px;
+  height: 40px;
+  top: 60px;
+  left: 50%;
+  margin-left: -450px;
+  text-align: center;
+  background-color: #1f3f17;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+#resourceList{
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  text-align: right;
+  margin-right: 14px;
+}
+#resourceList li{
+  padding-top: 10px;
+}
+
+/*.stats{
+  display: inline;
+}*/
+
+#resources{
+  position: absolute;
+  left: 0;
+  height: 600px;
+  width: 70px;
+  background-color: #33562a;
+  opacity: 0.8;
+}
+
+#app-window{
+  position: absolute;
+  width: 900px;
+  height: 600px;
+  top: 101px;
+  left: 50%;
+  margin-left: -450px;
+  background-color: gray;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.startPage{
+  background-image: url("images/backgrounds/title.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.gamePage{
+  background-image: url("images/backgrounds/game.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#manage{
+  position: absolute;
+  right: 0;
+  height: 600px;
+  width: 70px;
+  background-color: #33562a;
+  opacity: 0.8;
+}
+
+#build{
+  position: absolute;
+
+}
+
+#messages{
+  position: absolute;
+  width: 898px;
+  height: 100px;
+  left: 50%;
+  margin-left: -450px;
+  top: 600px;
+  line-height: 25px;
+  text-align: center;
+  border: 1px solid black;
+  background-color: #1f3f17;
+
+}
+
+#messageContainer{
+  position: relative;
+  left: 60px;
+  top: 10px;
+  border: 1px solid #babdc1;
+  background-color: #bddbb6;
+  width: 588px;
+  height: 80px;
+  overflow-y: scroll;
+}
+
+#endTurn {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  width: 200px;
+  height: 82px;
+  background-color: #507248;
+  font-size: 30px;
+}
+
+li{
+  list-style-type: none;
+}
+
+.hidden{
+  display: none;
+}
+
+p{
+  color: blue;
+}
+
+.deleteOnStart input{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.resourceLogo {
+  width: 30px;
+  height: auto;
+}
+
+.menu-buttons{
+  height: 50px;
+  width: 50px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 2px 2px 2px 2px;
+  margin-top: 10px;
+
+}
+
+#manage-div{
+  height: 50px;
+  width: 50px;
+  background-image: url('images/icons/manageMenuLogo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #507248;
+}
+
+#build-div{
+  height: 50px;
+  width: 50px;
+  background-image: url('images/icons/buildMenuLogo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #507248;
+}
+
+#options-div{
+  height: 50px;
+  width: 50px;
+  background-image: url('images/icons/optionsMenuLogo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #507248;
+}
+
+#build {
+  position: absolute;
+  top: 0;
+  left: 70px;
+  height: 600px;
+  width: 760px;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 70px;
+  background-color: #33562a;
+  opacity: 0.8;
+  height: 600px;
+  width: 760px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#menu-nav{
+  text-align: left;
+  width: 100%;
+  height: 30px;
+  opacity: 1;
+  background-color: #33562a;
+}
+
+.building-name{
+  font-size: 30px;
+}
+
+.building-thumbnail{
+float: left;
+height: 200px;
+width: auto;
+border: 5px solid darkgreen;
+}
+
+.building-description{
+  color: black;
+  font-size: 17px;
+}
+
+.building-numberOwned{
+  color: black;
+}
+
+.building-entry{
+  opacity: 1;
+  padding-bottom: 110px;
+}
