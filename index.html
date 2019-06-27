@@ -6,49 +6,43 @@
     <title>CityScape</title>
     <link href="index.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/three.js"></script>
   </head>
   <body>
-    <header>
-      <h1>New Alexandria</h1>
-      <p id="villagetier"></p>
-      <p id="turn"></p>
+    <header id="title">
+      <ul id="titleList"></ul>
     </header>
-    <main>
-      <section id="overview">
-        <ul id="stats"></ul>
-        <ul id="resources"></ul>
-        <ul id="protections"></ul>
+    <section id="stats">
+      <ul id="statsList"></ul>
+    </section>
+    <main class="startPage" id="app-window">
+      <section class="hidden" id="resources">
+        <ul id="resourceList"></ul>
       </section>
-      <section id="management">
-        <h2>Overview</h2>
-        <ul id="workerlist">
-          <h2>Worker List</h2>
-          <ul id="workers"></ul>
-        </ul>
-        <ul id="buildings">
-          <h2>Owned Buildings</h2>
-          <ul id="houseBuildings-owned"></ul>
-          <ul id="farmBuildings-owned"></ul>
-          <ul id="woodCutterBuildings-owned"></ul>
-          <ul id="mineBuildings-owned"></ul>
-          <ul id="blackSmithBuildings-owned"></ul>
-          <ul id="bakeryBuildings-owned"></ul>
-          <ul id="breweryBuildings-owned"></ul>
-          <ul id="graineryBuildings-owned"></ul>
-          <ul id="hospitalBuildings-owned"></ul>
-          <ul id="fireFighterBuildings-owned"></ul>
-          <ul id="policeBuildings-owned"></ul>
-          <ul id="militaryBuildings-owned"></ul>
-        </ul>
-        <section id="build-menu">
-        </section>
+      <section class="hidden" id="manage">
+        <button class="menu-buttons" id="manageButton"><div id="manage-div"></div></button>
+        <button class="menu-buttons" id="buildButton"><div id="build-div"></div></button>
+        <button class="menu-buttons" id="optionsButton"><div id="options-div"></div></button>
       </section>
-      <section id="readout">
-        <section id="build-qeue"></section>
+      <section class="menu hidden" id="viewBuildings">
+        <ul class="manage-page" id="viewBuildingsList">
+          <li>foo</li>
+        </ul>
+        <ul class="manage-page hidden" id="viewWorkersList">
+          <li>bar</li>
+        </ul>
+      </section>
+      <section class="menu hidden" id="build"><ul id="buildList"></ul></section>
+      <section class="menu hidden" id="options"><ul id="optionsList"></ul></section>
+
+      <section id="messages">
+        <div class="hidden" id="messageContainer"></div>
+        <button class="hidden" id="endTurn">End Turn</button>
       </section>
     </main>
-    <script src="objects.js"></script>
+    <script src="constantData.js"></script>
+    <script src="gameStateData.js"></script>
+    <script src="functionData.js"></script>
     <script src="controller.js"></script>
-    <script src="gui.js"></script>
   </body>
 </html>
