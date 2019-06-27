@@ -1,46 +1,140 @@
 //gameState objects
 let buildingStates = {
   houses: {
-    house: {
+    simple: {
+      name: 'simpleHouse',
       tier: 0,
       numberOwned: 0,
       residents: 0
-    }
-  },
-  farms: {
-    farm: {
+    },
+    complex: {
       tier: 0,
       numberOwned: 0,
-      wokers: 0
+      residents: 0
+    },
+    advanced: {
+      tier: 0,
+      numberOwned: 0,
+      residents: 0
+    },
+  },
+  farms: {
+    simple: {
+      tier: 0,
+      numberOwned: 0,
+      maxWokers: 0
+    },
+    complex: {
+      tier: 0,
+      numberOwned: 0,
+      maxWokers: 0
+    },
+    advanced: {
+      tier: 0,
+      numberOwned: 0,
+      maxWokers: 0
     }
   },
   lumberMills: {
-    lumberMill: {
+    simple: {
       tier: 0,
       numberOwned: 0,
-      wokers: 0
+      maxWokers: 0
+    },
+    complex: {
+      tier: 0,
+      numberOwned: 0,
+      maxWokers: 0
+    },
+    advanced: {
+      tier: 0,
+      numberOwned: 0,
+      maxWokers: 0
     }
   },
   mines: {
-    mine: {
+    simple: {
       tier: 0,
       numberOwned: 0,
-      wokers: 0
+      workers: 0
+    },
+    complex: {
+      tier: 0,
+      numberOwned: 0,
+      workers: 0
+    },
+    advanced: {
+      tier: 0,
+      numberOwned: 0,
+      workers: 0
     }
   },
   smiths: {
-    smith: {
+    simple: {
       tier: 0,
       numberOwned: 0,
       wokers: 0
+    },
+    complex: {
+      tier: 0,
+      numberOwned: 0,
+      wokers: 0,
+      workers: 0
+    },
+    advanced: {
+      tier: 0,
+      numberOwned: 0,
+      wokers: 0,
+      workers: 0
     }
   },
   bakeries: {
-    bakery: {
+    simple: {
       tier: 0,
       numberOwned: 0,
       wokers: 0
+    },
+    complex: {
+      tier: 0,
+      numberOwned: 0,
+      wokers: 0,
+    },
+    advanced: {
+      tier: 0,
+      numberOwned: 0,
+      workers: 0
     }
+  }
+};
+
+let workerList = {
+  unemployed: {
+    count: 25,
+    maxCount: 0,
+  },
+  laborers: {
+    count: 0,
+    maxCount: 0,
+  },
+  farmers: {
+    count: 0,
+    maxCount: 16,
+  },
+  carpenters: {
+    count: 0,
+    maxCount: 4,
+  },
+  miners: {
+    count: 0,
+    maxCount: 4,
+  },
+  smiths: {
+    count: 0,
+    maxCount: 0,
+  },
+  bakers: {
+    count: 0,
+    maxCount: 0,
   }
 };
 
@@ -54,6 +148,7 @@ let resourceStates = {
 };
 
 let statStates = {
+  turn: 1,
   population: 0,
   hunger: 0,
   health: 0,
@@ -72,7 +167,22 @@ let researchStates = {
 let cityState = tiers.city.settlement;
 
 let player = {
-  cityName: cityState.name + $('#nameCity').value(),
-  name: 'Mayor' + $('#nameSelf').value(),
-  difficulty: 'Normal',
+  cityName: null,
+  name: null,
+  difficulty: null,
+  tier: 'simple'
 }
+
+let canBuild = [];
+
+let records = {
+  population: 0,
+  grain: 0,
+  wood: 0,
+  stone: 0,
+  iron: 0,
+  steel: 0,
+  bread: 0,
+  deaths: 0,
+  fires: 0
+};
