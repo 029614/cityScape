@@ -45,6 +45,16 @@ header h2{
   border-bottom: 1px solid black;
 }
 
+#statsList {
+  text-align: left;
+}
+
+#statsList li {
+  display: inline;
+  padding-left: 25px;
+  font-size: 20px;
+}
+
 #resourceList{
   margin: 0;
   padding: 0;
@@ -127,7 +137,7 @@ header h2{
 
 }
 
-#messageContainer{
+#messageWrapper{
   position: relative;
   left: 60px;
   top: 10px;
@@ -136,6 +146,10 @@ header h2{
   width: 588px;
   height: 80px;
   overflow-y: scroll;
+}
+
+#messageContainer li {
+  display: inline;
 }
 
 #endTurn {
@@ -209,6 +223,43 @@ p{
   background-size: cover;
   background-position: center;
   background-color: #507248;
+}
+
+#buildingQeue {
+  margin: 0;
+  padding: 10px 0 0 9px;
+}
+
+.build-background {
+  height: 48px;
+  width: 48px;
+  overflow: hidden;
+  border: 2px solid darkgray;
+}
+
+.empty {
+  height: 48px;
+  width: 48px;
+  overflow: hidden;
+  border: 2px solid darkgray;
+}
+
+.qeueImage {
+  height: 50px;
+  width: auto;
+}
+
+.build {
+  height: 30px;
+  width: auto;
+  position: absolute;
+}
+
+.cancel {
+  opacity: .8;
+}
+.upgrade {
+  opacity: .8;
 }
 
 #build {

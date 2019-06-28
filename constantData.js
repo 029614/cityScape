@@ -5,52 +5,62 @@ let buildings = {
     simpleHouse: {
       name: 'Simple House',
       type: 'house',
+      directory: 'houses',
       description: 'Houses provide shelter for citizens. Your population cannot grow beyond available housing.',
       tier: 'simple',
       costModifier: 100,
       laborModifier: 100,
+      outputType: false,
       capacityModifier: 5,
       numberOwned: 5,
       residents: 0,
+      id: 'simpleHouse',
       image: 'images/thumbnails/smallHouse.png'
     },
     complexHouse: {
       name: 'Complex House',
       type: 'house',
+      directory: 'houses',
       description: 'Houses provide shelter for citizens. Your population cannot grow beyond available housing.',
       tier: 'complex',
       costModifier: 100,
       laborModifier: 100,
       capacityModifier: 25,
+      outputType: false,
       numberOwned: 0,
       residents: 0,
-      image: 'images/thumbnails/.png'
+      id: 'complexHouse',
+      image: 'images/thumbnails/smallHouse.png'
     },
     advancedHouse: {
       name: 'Advanced House',
       type: 'house',
+      directory: 'houses',
       description: 'Houses provide shelter for citizens. Your population cannot grow beyond available housing.',
       tier: 'advanced',
       costModifier: 100,
       laborModifier: 100,
       capacityModifier: 100,
+      outputType: false,
       numberOwned: 0,
       residents: 0,
-      image: 'images/thumbnails/.png'
+      id: 'advancedHouse',
+      image: 'images/thumbnails/smallHouse.png'
     }
   },
   farms: {
     simpleFarm: {
       name: 'Simple Farm',
       type: 'industry',
+      directory: 'farms',
       description: 'Farms produce grain.',
       tier: 'simple',
       costModifier: 100,
       laborModifier: 100,
-      inputType: false,
+      inputType: 'nothing',
       workerInputModifier: false,
       outputType: 'grain',
-      workerOutputModifier: 100,
+      workerOutputModifier: 25,
       numberOfWorkersModifier: 100,
       numberOwned: 4,
       workerCapacity: 4,
@@ -61,11 +71,12 @@ let buildings = {
     complexFarm: {
       name: 'Complex Farm',
       type: 'industry',
+      directory: 'farms',
       description: 'Farms produce grain.',
       tier: 'complex',
       costModifier: 100,
       laborModifier: 100,
-      inputType: false,
+      inputType: 'nothing',
       workerInputModifier: false,
       outputType: 'grain',
       workerOutputModifier: 100,
@@ -74,16 +85,17 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'complexFarm',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallFarm.png'
     },
     advancedFarm: {
       name: 'Advanced Farm',
       type: 'industry',
+      directory: 'farms',
       description: 'Farms produce grain.',
       tier: 'advanced',
       costModifier: 100,
       laborModifier: 100,
-      inputType: false,
+      inputType: 'nothing',
       workerInputModifier: false,
       outputType: 'grain',
       workerOutputModifier: 100,
@@ -92,21 +104,22 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'advancedFarm',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallFarm.png'
     }
   },
   lumberMills: {
     simpleLumberMill: {
       name: 'Simple Lumber Mill',
       type: 'industry',
+      directory: 'lumberMills',
       description: 'Lumber Mills produce lumber.',
       tier: 'simple',
       costModifier: 100,
       laborModifier: 100,
-      inputType: false,
+      inputType: 'nothing',
       workerInputModifier: false,
       outputType: 'lumber',
-      workerOutputModifier: 100,
+      workerOutputModifier: 25,
       numberOfWorkersModifier: 100,
       numberOwned: 1,
       workerCapacity: 4,
@@ -117,11 +130,12 @@ let buildings = {
     complexLumberMill: {
       name: 'Complex Lumber Mill',
       type: 'industry',
+      directory: 'lumberMills',
       description: 'Lumber Mills produce lumber.',
       tier: 'complex',
       costModifier: 100,
       laborModifier: 100,
-      inputType: false,
+      inputType: 'nothing',
       workerInputModifier: false,
       outputType: 'lumber',
       workerOutputModifier: 100,
@@ -130,16 +144,17 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'complexLumberMill',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallMill.png'
     },
     advancedLumberMill: {
       name: 'Advanced Lumber Mill',
       type: 'industry',
+      directory: 'lumberMills',
       description: 'Lumber Mills produce lumber.',
       tier: 'advanced',
       costModifier: 100,
       laborModifier: 100,
-      inputType: false,
+      inputType: 'nothing',
       workerInputModifier: false,
       outputType: 'lumber',
       workerOutputModifier: 100,
@@ -148,21 +163,23 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'advancedLumberMill',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallMill.png'
     }
   },
   mines: {
     simpleMine: {
       name: 'Simple Mine',
       type: 'industry',
+      directory: 'mines',
       description: 'Mines produce stone and iron.',
       tier: 'simple',
       costModifier: 100,
       laborModifier: 100,
-      inputType: false,
+      inputType: 'nothing',
       workerInputModifier: false,
-      outputType: ['stone', 'iron'],
-      workerOutputModifier: 100,
+      outputType: 'stone',
+      outputType2: 'iron',
+      workerOutputModifier: 25,
       numberOfWorkersModifier: 100,
       numberOwned: 1,
       workerCapacity: 4,
@@ -173,62 +190,68 @@ let buildings = {
     complexMine: {
       name: 'Complex Mine',
       type: 'industry',
+      directory: 'mines',
       description: 'Mines produce stone and iron.',
       tier: 'complex',
       costModifier: 100,
       laborModifier: 100,
-      inputType: false,
+      inputType: 'nothing',
       workerInputModifier: false,
-      outputType: ['stone', 'iron'],
+      outputType: 'stone',
+      outputType2: 'iron',
       workerOutputModifier: 100,
       numberOfWorkersModifier: 100,
       numberOwned: 0,
       workerCapacity: 4,
       workers: 0,
       id: 'complexMine',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallMine.png'
     },
     advancedMine: {
       name: 'Advanced Mine',
       type: 'industry',
+      directory: 'mines',
       description: 'Mines produce stone and iron.',
       tier: 'advanced',
       costModifier: 100,
       laborModifier: 100,
-      inputType: false,
+      inputType: 'nothing',
       workerInputModifier: false,
-      outputType: ['stone', 'iron'],
+      outputType: 'stone',
+      outputType2: 'iron',
       workerOutputModifier: 100,
       numberOfWorkersModifier: 100,
       numberOwned: 0,
       workerCapacity: 4,
       workers: 0,
       id: 'advancedMine',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallMine.png'
     }
   },
   smiths: {
     simpleSmith: {
       name: 'Simple Black Smith',
       type: 'industry',
+      directory: 'smiths',
       description: 'Black Smiths produce steel from iron',
       tier: 'simple',
       costModifier: 100,
       laborModifier: 100,
       inputType: 'iron',
-      workerInputModifier: 100,
+      workerInputModifier: 30,
       outputType: 'steel',
-      workerOutputModifier: 100,
+      workerOutputModifier: 10,
       numberOfWorkersModifier: 100,
       numberOwned: 0,
       workerCapacity: 4,
       workers: 0,
       id: 'simpleSmith',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallSmith.png'
     },
     complexSmith: {
       name: 'Complex Black Smith',
       type: 'industry',
+      directory: 'smiths',
       description: 'Black Smiths produce steel from iron',
       tier: 'complex',
       costModifier: 100,
@@ -242,11 +265,12 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'complexSmith',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallSmith.png'
     },
     advancedSmith: {
       name: 'Advanced Black Smith',
       type: 'industry',
+      directory: 'smiths',
       description: 'Black Smiths produce steel from iron',
       tier: 'advanced',
       costModifier: 100,
@@ -260,31 +284,33 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'advancedSmith',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallSmith.png'
     }
   },
   bakeries: {
     simpleBakery: {
       name: 'Simple Bakery',
       type: 'industry',
+      directory: 'bakeries',
       description: 'Bakeries produce bread from grain',
       tier: 'simple',
       costModifier: 100,
       laborModifier: 100,
       inputType: 'grain',
-      workerInputModifier: 100,
+      workerInputModifier: 30,
       outputType: 'bread',
-      workerOutputModifier: 100,
+      workerOutputModifier: 10,
       numberOfWorkersModifier: 100,
       numberOwned: 0,
       workerCapacity: 4,
       workers: 0,
       id: 'simpleBakery',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallBakery.png'
     },
     complexBakery: {
       name: 'Complex Bakery',
       type: 'industry',
+      directory: 'bakeries',
       description: 'Bakeries produce bread from grain',
       tier: 'complex',
       costModifier: 100,
@@ -298,11 +324,12 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'complexBakery',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallBakery.png'
     },
     advancedBakery: {
       name: 'Advanced Bakery',
       type: 'industry',
+      directory: 'bakeries',
       description: 'Bakeries produce bread from grain',
       tier: 'advanced',
       costModifier: 100,
@@ -316,7 +343,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'advancedBakery',
-      image: 'images/thumbnails/.png'
+      image: 'images/thumbnails/smallBakery.png'
     }
   }
 };
@@ -325,7 +352,10 @@ const tiers = {
   //object containing data for construction tiers and city upgrades
   construction: {
     simple: {
-      costModifier: 1,
+      wood: 1,
+      stone: 1,
+      iron: null,
+      steel: null,
       laborModifier: 1,
       workerInputModifier: 3,
       workerOutputModifier: 1,
@@ -333,7 +363,10 @@ const tiers = {
       capacityModifier: 1
     },
     complex: {
-      costModifier: 3,
+      wood: 3,
+      stone: 3,
+      iron: 1,
+      steel: null,
       laborModifier: 3,
       workerInputModifier: 2,
       workerOutputModifier: 2,
@@ -341,7 +374,10 @@ const tiers = {
       capacityModifier: 3
     },
     advanced: {
-      costModifier: 5,
+      wood: 5,
+      stone: 5,
+      iron: 3,
+      steel: 1,
       laborModifier: 5,
       workerInputModifier: 1,
       workerOutputModifier: 3,

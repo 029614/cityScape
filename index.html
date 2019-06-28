@@ -23,20 +23,21 @@
         <button class="menu-buttons" id="manageButton"><div id="manage-div"></div></button>
         <button class="menu-buttons" id="buildButton"><div id="build-div"></div></button>
         <button class="menu-buttons" id="optionsButton"><div id="options-div"></div></button>
+        <ul id="buildingQeue">
+        </ul>
       </section>
       <section class="menu hidden" id="viewBuildings">
         <ul class="manage-page" id="viewBuildingsList">
           <li>foo</li>
         </ul>
-        <ul class="manage-page hidden" id="viewWorkersList">
-          <li>bar</li>
-        </ul>
       </section>
-      <section class="menu hidden" id="build"><ul id="buildList"></ul></section>
+      <section class="menu hidden" id="build">
+        <ul id="buildList"></ul>
+      </section>
       <section class="menu hidden" id="options"><ul id="optionsList"></ul></section>
 
       <section id="messages">
-        <div class="hidden" id="messageContainer"></div>
+        <div class="hidden" id="messageWrapper"><ul id="messageContainer"></ul></div>
         <button class="hidden" id="endTurn">End Turn</button>
       </section>
     </main>

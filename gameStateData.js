@@ -139,20 +139,23 @@ let workerList = {
 };
 
 let resourceStates = {
-  grain: 0,
-  bread: 0,
-  lumber: 0,
-  stone: 0,
-  iron: 0,
+  grain: 50,
+  bread: 10,
+  lumber: 50,
+  stone: 50,
+  iron: 25,
   steel: 0
 };
 
 let statStates = {
   turn: 1,
-  population: 0,
-  hunger: 0,
-  health: 0,
-  morale: 0,
+  population: 25,
+  hunger: 50,
+  hungerWord: '',
+  health: 50,
+  healthWord: '',
+  morale: 50,
+  moraleWord: '',
   simpleTier: true,
   complexTier: false,
   advancedTier: false
@@ -170,7 +173,8 @@ let player = {
   cityName: null,
   name: null,
   difficulty: null,
-  tier: 'simple'
+  tier: 'simple',
+  cityType: 'village'
 }
 
 let canBuild = [];
@@ -185,4 +189,63 @@ let records = {
   bread: 0,
   deaths: 0,
   fires: 0
+};
+
+let qeue = {
+  one: {
+    status: 'empty',
+    id: 'empty',
+    directory: 'empty',
+    labor: 0,
+    type: 'empty'
+  },
+  two: {
+    status: 'empty',
+    id: 'empty',
+    directory: 'empty',
+    labor: 0,
+    type: 'empty'
+  },
+  three: {
+    status: 'empty',
+    id: 'empty',
+    directory: 'empty',
+    labor: 0,
+    type: 'empty'
+  },
+  four: {
+    status: 'empty',
+    id: 'empty',
+    directory: 'empty',
+    labor: 0,
+    type: 'empty'
+  },
+  five: {
+    status: 'empty',
+    id: 'empty',
+    directory: 'empty',
+    labor: 0,
+    type: 'empty'
+  },
+  six: {
+    status: 'empty',
+    id: 'empty',
+    directory: 'empty',
+    labor: 0,
+    type: 'empty'
+  },
+  seven: {
+    status: 'empty',
+    id: 'empty',
+    directory: 'empty',
+    labor: 0,
+    type: 'empty'
+  },
+  eight: {
+    status: 'empty',
+    id: 'empty',
+    directory: 'empty',
+    labor: 0,
+    type: 'empty'
+  }
 };
