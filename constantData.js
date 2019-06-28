@@ -15,6 +15,7 @@ let buildings = {
       numberOwned: 5,
       residents: 0,
       id: 'simpleHouse',
+      upgrade: 'complexHouse',
       image: 'images/thumbnails/smallHouse.png'
     },
     complexHouse: {
@@ -30,6 +31,7 @@ let buildings = {
       numberOwned: 0,
       residents: 0,
       id: 'complexHouse',
+      upgrade: 'advancedHouse',
       image: 'images/thumbnails/smallHouse.png'
     },
     advancedHouse: {
@@ -45,6 +47,7 @@ let buildings = {
       numberOwned: 0,
       residents: 0,
       id: 'advancedHouse',
+      upgrade: 'none',
       image: 'images/thumbnails/smallHouse.png'
     }
   },
@@ -66,6 +69,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'simpleFarm',
+      upgrade: 'complexFarm',
       image: 'images/thumbnails/smallFarm.png'
     },
     complexFarm: {
@@ -85,6 +89,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'complexFarm',
+      upgrade: 'advancedFarm',
       image: 'images/thumbnails/smallFarm.png'
     },
     advancedFarm: {
@@ -104,6 +109,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'advancedFarm',
+      upgrade: 'none',
       image: 'images/thumbnails/smallFarm.png'
     }
   },
@@ -125,6 +131,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'simpleLumberMill',
+      upgrade: 'complexLumberMill',
       image: 'images/thumbnails/smallMill.png'
     },
     complexLumberMill: {
@@ -144,6 +151,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'complexLumberMill',
+      upgrade: 'advancedLumberMill',
       image: 'images/thumbnails/smallMill.png'
     },
     advancedLumberMill: {
@@ -163,6 +171,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'advancedLumberMill',
+      upgrade: 'none',
       image: 'images/thumbnails/smallMill.png'
     }
   },
@@ -184,7 +193,8 @@ let buildings = {
       numberOwned: 1,
       workerCapacity: 4,
       workers: 0,
-      id: 'simpleMine',
+      id: 'complexMine',
+      upgrade: '',
       image: 'images/thumbnails/smallMine.png'
     },
     complexMine: {
@@ -204,7 +214,8 @@ let buildings = {
       numberOwned: 0,
       workerCapacity: 4,
       workers: 0,
-      id: 'complexMine',
+      id: 'advancedMine',
+      upgrade: '',
       image: 'images/thumbnails/smallMine.png'
     },
     advancedMine: {
@@ -224,7 +235,8 @@ let buildings = {
       numberOwned: 0,
       workerCapacity: 4,
       workers: 0,
-      id: 'advancedMine',
+      id: 'none',
+      upgrade: '',
       image: 'images/thumbnails/smallMine.png'
     }
   },
@@ -246,6 +258,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'simpleSmith',
+      upgrade: 'complexSmith',
       image: 'images/thumbnails/smallSmith.png'
     },
     complexSmith: {
@@ -264,7 +277,8 @@ let buildings = {
       numberOwned: 0,
       workerCapacity: 4,
       workers: 0,
-      id: 'complexSmith',
+      id: 'advancedSmith',
+      upgrade: '',
       image: 'images/thumbnails/smallSmith.png'
     },
     advancedSmith: {
@@ -284,6 +298,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'advancedSmith',
+      upgrade: 'none',
       image: 'images/thumbnails/smallSmith.png'
     }
   },
@@ -305,6 +320,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'simpleBakery',
+      upgrade: 'complexBakery',
       image: 'images/thumbnails/smallBakery.png'
     },
     complexBakery: {
@@ -324,6 +340,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'complexBakery',
+      upgrade: 'advancedBakery',
       image: 'images/thumbnails/smallBakery.png'
     },
     advancedBakery: {
@@ -343,6 +360,7 @@ let buildings = {
       workerCapacity: 4,
       workers: 0,
       id: 'advancedBakery',
+      upgrade: 'none',
       image: 'images/thumbnails/smallBakery.png'
     }
   }

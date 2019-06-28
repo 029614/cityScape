@@ -22,34 +22,34 @@ let buildingStates = {
     simple: {
       tier: 0,
       numberOwned: 0,
-      maxWokers: 0
+      maxWorkers: 0
     },
     complex: {
       tier: 0,
       numberOwned: 0,
-      maxWokers: 0
+      maxWorkers: 0
     },
     advanced: {
       tier: 0,
       numberOwned: 0,
-      maxWokers: 0
+      maxWorkers: 0
     }
   },
   lumberMills: {
     simple: {
       tier: 0,
       numberOwned: 0,
-      maxWokers: 0
+      maxWorkers: 0
     },
     complex: {
       tier: 0,
       numberOwned: 0,
-      maxWokers: 0
+      maxWorkers: 0
     },
     advanced: {
       tier: 0,
       numberOwned: 0,
-      maxWokers: 0
+      maxWorkers: 0
     }
   },
   mines: {
@@ -73,18 +73,16 @@ let buildingStates = {
     simple: {
       tier: 0,
       numberOwned: 0,
-      wokers: 0
+      workers: 0
     },
     complex: {
       tier: 0,
       numberOwned: 0,
-      wokers: 0,
       workers: 0
     },
     advanced: {
       tier: 0,
       numberOwned: 0,
-      wokers: 0,
       workers: 0
     }
   },
@@ -92,12 +90,12 @@ let buildingStates = {
     simple: {
       tier: 0,
       numberOwned: 0,
-      wokers: 0
+      workers: 0
     },
     complex: {
       tier: 0,
       numberOwned: 0,
-      wokers: 0,
+      workers: 0,
     },
     advanced: {
       tier: 0,
@@ -149,6 +147,7 @@ let resourceStates = {
 
 let statStates = {
   turn: 1,
+  laborStrength: 0,
   population: 25,
   hunger: 50,
   hungerWord: '',
@@ -176,8 +175,6 @@ let player = {
   tier: 'simple',
   cityType: 'village'
 }
-
-let canBuild = [];
 
 let records = {
   population: 0,

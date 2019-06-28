@@ -15,8 +15,10 @@ function nextTurn(){
 
 $("#endTurn").click(function() {
   resourceHandler();
+  statStates.laborStrength = workerList.unemployed.count * 25;
   constructionHandler();
   hungerHandler();
+  listBuildings();
   statStates.turn++;
   refreshDom();
 });
@@ -25,12 +27,6 @@ function refresh(){
   //refreshes game state to show mid turn changes, such as build orders.
   recalculateStats();
   refreshDom();
-};
-
-function build(buildingType){
-  //handles building and stat reactions
-  constructionHandler();
-  refresh();
 };
 
 function research(){
@@ -163,7 +159,7 @@ $(document).on('click', '.buildButton', function() {
     status: 'busy',
     id: buildingAddress.id,
     directory: buildingAddress.directory,
-    labor: buildingAddress.labor * tiers.construction[buildingAddress.tier].laborModifier,
+    labor: buildingAddress.laborModifier * tiers.construction[buildingAddress.tier].laborModifier,
     remainingTurns: 0,
     type: 'build'
   };
@@ -183,6 +179,7 @@ $(document).on('click', '.buildButton', function() {
 
 $(document).on('click', '.upgradeBuilding', function() {
   let buildingId = event.target.id;
+  console.log(buildingId);
   let buildingAddress = '';
   let success = null;
   for (let i in buildings){
@@ -194,13 +191,17 @@ $(document).on('click', '.upgradeBuilding', function() {
       };
     };
   };
-  newQeue = {
-    status: 'busy',
-    id: buildingAddress.id,
-    directory: buildingAddress.directory,
-    labor: buildingAddress.labor * tiers.construction[buildingAddress.tier].laborModifier * 2,
-    remainingTurns: 0,
-    type: 'upgrade'
+  if (buildingAddress.upgrade === 'none'){
+    message('This building is already fully upgraded!');
+  } else {
+    newQeue = {
+      status: 'busy',
+      id: buildingAddress.id,
+      directory: buildingAddress.directory,
+      labor: buildingAddress.labor * tiers.construction[buildingAddress.tier].laborModifier * 2,
+      remainingTurns: 0,
+      type: 'upgrade'
+    };
   };
   for (let i in qeue){
     if (qeue[i].status === 'empty'){

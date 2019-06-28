@@ -1,7 +1,4 @@
 //independant operations
-function constructionHandler() {
-  //handles construction qeue
-};
 
 function researchHandler() {
   //handles research qeue
@@ -17,14 +14,14 @@ function populationHandler(change) {
     total = Math.abs(total);
     if (workerList.unemployed.count < total){
       let deficit = total - workerList.unemployed.count;
-      for (let i in workList){
-        if (workList[i].count >= deficit){
-          workList.unemployed.count += deficit;
-          workList[i].count -= deficit;
+      for (let i in workerList){
+        if (workerList[i].count >= deficit){
+          workerList.unemployed.count += deficit;
+          workerList[i].count -= deficit;
         } else {
-          deficit -= workList[i].count;
-          workList.unemployed.count += workList[i].count;
-          workList[i].count -= workList[i].count
+          deficit -= workerList[i].count;
+          workerList.unemployed.count += workerList[i].count;
+          workerList[i].count -= workerList[i].count
         };
       };
     };
@@ -109,15 +106,11 @@ function healthHandler() {
   //calculates health score
 };
 
-function statusInterpreter() {
-  //interprets health, hunger and morale integers into literal descriptions
-};
-
 function createDom(cityName, playerName) {
   //creates GUI
   $("#titleList").replaceWith("<p id='titleList'><h2 class='title'>" + player.cityName + "</h2><h2 class='title'>Mayor " + player.name +"</h2><h2 class='title'>Turn: " + statStates.turn + "</h2><p>");
   $("#resourceList").replaceWith("<ul id='resourceList'><li><img class='resourceLogo' src='" + resources.grain.imageSource + "' alt='" + resources.grain.name + "'>: " + resourceStates.grain + "</li><li><img class='resourceLogo' src='" + resources.bread.imageSource + "' alt='" + resources.bread.name + "'>: " + resourceStates.bread + "</li><li><img class='resourceLogo' src='" + resources.lumber.imageSource + "' alt='" + resources.lumber.name + "'>: " + resourceStates.lumber + "</li><li><img class='resourceLogo' src='" + resources.stone.imageSource + "' alt='" + resources.stone.name + "'>: " + resourceStates.stone + "</li><li><img class='resourceLogo' src='" + resources.iron.imageSource + "' alt='" + resources.iron.name + "'>: " + resourceStates.iron + "</li><li><img class='resourceLogo' src='" + resources.steel.imageSource + "' alt='" + resources.steel.name + "'>: " + resourceStates.steel + "</li>");
-  $("#statsList").replaceWith('<ul id="statsList"><li class="stats">Population: ' + statStates.population + '</li><li class="stats">Hunger: ' + statStates.hunger + '</li><li class="stats">Health: ' + statStates.health + '</li><li class="stats">Morale: ' + statStates.morale + '</li></ul>');
+  $("#statsList").replaceWith('<ul id="statsList"><li class="stats">Population: ' + statStates.population + '</li><li class="stats">Hunger: ' + statStates.hungerWord + '</li><li class="stats">Health: ' + statStates.healthWord + '</li><li class="stats">Morale: ' + statStates.moraleWord + '</li></ul>');
   //$("#viewWorkersList").replaceWith("")
   //$("#buildList").replaceWith('<ul id="buildList">' + canBuildHtml + '</ul>');
   //$("#build").replaceWith("")
@@ -131,7 +124,7 @@ function loadStartState() {
 function refreshDom() {
 //refreshes GUI to display changes to gameStateData
 $("#resourceList").replaceWith("<ul id='resourceList'><li><img class='resourceLogo' src='" + resources.grain.imageSource + "' alt='" + resources.grain.name + "'>: " + resourceStates.grain + "</li><li><img class='resourceLogo' src='" + resources.bread.imageSource + "' alt='" + resources.bread.name + "'>: " + resourceStates.bread + "</li><li><img class='resourceLogo' src='" + resources.lumber.imageSource + "' alt='" + resources.lumber.name + "'>: " + resourceStates.lumber + "</li><li><img class='resourceLogo' src='" + resources.stone.imageSource + "' alt='" + resources.stone.name + "'>: " + resourceStates.stone + "</li><li><img class='resourceLogo' src='" + resources.iron.imageSource + "' alt='" + resources.iron.name + "'>: " + resourceStates.iron + "</li><li><img class='resourceLogo' src='" + resources.steel.imageSource + "' alt='" + resources.steel.name + "'>: " + resourceStates.steel + "</li>");
-$("#statsList").replaceWith('<ul id="statsList"><li class="stats">Population: ' + statStates.population + '</li><li class="stats">Hunger: ' + statStates.hunger + '</li><li class="stats">Health: ' + statStates.health + '</li><li class="stats">Morale: ' + statStates.morale + '</li></ul>');
+$("#statsList").replaceWith('<ul id="statsList"><li class="stats">Population: ' + statStates.population + '</li><li class="stats">Hunger: ' + statStates.hungerWord + '</li><li class="stats">Health: ' + statStates.healthWord + '</li><li class="stats">Morale: ' + statStates.moraleWord + '</li></ul>');
 };
 
 function recalculateStats() {
@@ -163,9 +156,9 @@ function listBuildings() {
       let id = element.name;
       id = id.replace(/\s/g, '');
       if (element.numberOwned > 0 && element.type === 'house'){
-        htmlStart += ('<li class="building-entry"><image class="building-thumbnail" src="' + element.image + '" alt="' + element.name + '"><h2 class="building-name">' + element.name + ':</h2><p class="building-description">' + element.description + '</p><p class="building-numberOwned">Number Owned: ' + element.numberOwned + '</p><button class="upgradeBuilding" id="' + element.id + 'Upgrade">Upgrade Building</button><p class="building-workers">Residents: ' + element.residents + '/' + (element.numberOwned * element.capacityModifier) + '<p></li>');
+        htmlStart += ('<li class="building-entry"><image class="building-thumbnail" src="' + element.image + '" alt="' + element.name + '"><h2 class="building-name">' + element.name + ':</h2><p class="building-description">' + element.description + '</p><p class="building-numberOwned">Number Owned: ' + element.numberOwned + '</p><button class="upgradeBuilding" id="' + element.id + '">Upgrade Building</button><p class="building-workers">Residents: ' + element.residents + '/' + (element.numberOwned * element.capacityModifier) + '<p></li>');
       }else if (element.numberOwned > 0 && element.type === 'industry') {
-        htmlStart += ('<li class="building-entry"><image class="building-thumbnail" src="' + element.image + '" alt="' + element.name + '"><h2 class="building-name">' + element.name + ':</h2><p class="building-description">' + element.description + '</p><p class="building-numberOwned">Number Owned: ' + element.numberOwned + '</p><button class="upgradeBuilding" id="' + element.id + 'Upgrade">Upgrade Building</button><div class="worker-div"><p class="building-workers">Workers: ' + element.workers + '/' + (element.numberOwned * element.workerCapacity) + '</p></div><button class="workerButton removeWorker" id="' + element.id + '">Fire</button><button class="workerButton addWorker" id="' + element.id + '">Hire</button></div></li>');
+        htmlStart += ('<li class="building-entry"><image class="building-thumbnail" src="' + element.image + '" alt="' + element.name + '"><h2 class="building-name">' + element.name + ':</h2><p class="building-description">' + element.description + '</p><p class="building-numberOwned">Number Owned: ' + element.numberOwned + '</p><button class="upgradeBuilding" id="' + element.id + '">Upgrade Building</button><div class="worker-div"><p class="building-workers">Workers: ' + element.workers + '/' + (element.numberOwned * element.workerCapacity) + '</p></div><button class="workerButton removeWorker" id="' + element.id + '">Fire</button><button class="workerButton addWorker" id="' + element.id + '">Hire</button></div></li>');
       };
       $('#viewBuildingsList').replaceWith(htmlStart + htmlEnd);
     };
@@ -200,7 +193,7 @@ function listConstruction() {
             costs[x] = '';
           };
         };
-        htmlStart += ('<li class="building-entry"><image class="building-thumbnail" src="' + element.image + '" alt="' + element.name + '"><h2 class="building-name">' + element.name + ':</h2><p class="outputType">Produces ' + costs.outputQuantity + ' ' + element.outputType + ' from ' + costs.inputQuantity + ' ' + element.inputType + ' every turn.</p><p class="cost">Building Costs:<br> Wood: ' + costs.costWood + ', Stone: ' + costs.costStone + ', Iron: ' + costs.costIron + ', Steel: ' + costs.costSteel + '</p><p class="workers">This building can employ up to ' + costs.numberOfWorkers + ' workers.</p><button class="menuButton buildButon" id="' + element.id + '">Build</button></li>');
+        htmlStart += ('<li class="building-entry"><image class="building-thumbnail" src="' + element.image + '" alt="' + element.name + '"><h2 class="building-name">' + element.name + ':</h2><p class="outputType">Produces ' + costs.outputQuantity + ' ' + element.outputType + ' from ' + costs.inputQuantity + ' ' + element.inputType + ' every turn.</p><p class="cost">Building Costs:<br> Wood: ' + costs.costWood + ', Stone: ' + costs.costStone + ', Iron: ' + costs.costIron + ', Steel: ' + costs.costSteel + '</p><p class="workers">This building can employ up to ' + costs.numberOfWorkers + ' workers.</p><button class="menuButton buildButton" id="' + element.id + '">Build</button></li>');
       };
       $('#buildList').replaceWith(htmlStart + htmlEnd);
     };
@@ -214,35 +207,30 @@ function upgradeBuilding(building) {
 
 //dependant operations
 
-function advanceTurn() {
-  //advances gameState by 1 turn, updates gameStateData.
-  refreshDom();
-};
-
 function message(string) {
   $("#messageContainer").append('<li><p class="message messageContent">Turn ' + statStates.turn + ' : ' + string + '</p></li>');
+  window.scrollTo(0, document.body.scrollHeight);
 };
 
 function constructionHandler() {
   //handles construction qeue
-  let laborStrength = workerList.unemployed.count * 25;
-  qeue.one.remainingTurns = Math.ceil(qeue.one.labor / laborStrength);
+  qeue.one.remainingTurns = Math.ceil(qeue.one.labor / statStates.laborStrength);
   if (qeue.one.status === 'busy'){
-    if (qeue.one.labor <= laborStrength){
-      build(qeue.one.id);
-      laborStrength -= qeue.one.labor;
+    if (qeue.one.labor <= statStates.laborStrength){
+      statStates.laborStrength -= qeue.one.labor;
       buildings[qeue.one.directory][qeue.one.id].numberOwned++;
-      que.one = que.two;
-      que.two = que.three;
-      que.three = que.four;
-      que.four = que.five;
-      que.five = que.six;
-      que.six = que.seven;
-      que.seven = que.eight;
+      qeue.one = qeue.two;
+      qeue.two = qeue.three;
+      qeue.three = qeue.four;
+      qeue.four = qeue.five;
+      qeue.five = qeue.six;
+      qeue.six = qeue.seven;
+      qeue.seven = qeue.eight;
       qeue.eight.status = 'empty';
       constructionHandler();
+      populateQeue();
     } else {
-      qeue.one.labor -= laborStrength;
+      qeue.one.labor -= statStates.laborStrength;
     };
   };
 };
@@ -258,7 +246,7 @@ function populateQeue() {
       if (qeue[i].type === 'build'){
         $("#buildingQeue").append('<li class="constructionQeue"><div class="build-background"><img class="build qeueImage" src="images/icons/build.png"><img class="qeueBackground qeueImage" src="' + buildings[qeue[i].directory][qeue[i].id].image +'"><img class="hidden cancel qeueImage" src="images/icons/cancel.png"></div></li>');
       } else if (qeue[i].type === 'upgrade'){
-        $("#buildingQeue").append('<li class="constructionQeue"><div class="build-background"><img class="qeueBackground qeueImage" src="' + buildings[qeue[i].directory][qeue[i].id].image +'"><img class="upgrade qeueImage" src="images/icons/upgrade.png"><img class="hidden cancel qeueImage" src="images/icons/cancel.png"></div></li>');
+        $("#buildingQeue").append('<li class="constructionQeue"><div class="build-background"><img class="upgrade qeueImage" src="images/icons/upgrade.png"><img class="qeueBackground qeueImage" src="' + buildings[qeue[i].directory][qeue[i].id].image +'"><img class="hidden cancel qeueImage" src="images/icons/cancel.png"></div></li>');
       };
     } else if (qeue[i].status === 'empty'){
       $("#buildingQeue").append('<li class="constructionQeue"><div class="empty"></div></li>');
