@@ -124,7 +124,7 @@ function generateMenu(menu, building) {
     html += buildingHtml.information.numberOwned + buildingHtml.information.endHtml + buildingHtml.buttons.upgrade + buildingHtml.information.workers + buidlingHtml.buttons.fire + buidlingHtml.buttons.hire + buildingHtml.endHtml;
   } else if (menu === 'construction' && element.constantData.numberOfResidents == true){
     html += buildingHtml.information.residents + buildingHtml.information.endHtml + buildingHtml.costs.start;
-    if (buidling.construction.wood == true){
+    if (building.construction.wood == true){
       html += buildingHtml.costs.wood;
     };
     if (building.construction.stone == true){
